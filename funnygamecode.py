@@ -1,38 +1,22 @@
-import random
+from random import randint
 
 
+class Game:
+    def game(self):
+        ot = int(input("Выбери от кого-го числа угадывать:"))
+        do = int(input("Выбери до кого-го числа угадывать:"))
+        user = int(input(f"Угадайте число от {ot} до {do}:"))
+        choose = randint(1, 2)
+        scam = randint(1, 10000)
+        randomnum = user + scam
+        while ot > randomnum or randomnum > do or randomnum == user:
+            if randomnum < ot:
+                randomnum += 1
+            elif randomnum > do:
+                randomnum -= 1
+    def __str__(self):
+        return "Крутая игра сделанная за 5 минут"
 
-print("Выбери от кого-го числа угадывать")
-ot = input()
-print("Выбери до кого-го числа угадывать")
-do = input()
-randomnum = random.randint(int(ot), int(do))
+Gamer = Game()
 
-
-
-
-
-user = input(f"Угадайте число от {ot} до {do}:")
-choose = random.randint(1, 2)
-scam = random.randint(1, 5)
-if int(choose) == 1:
-    randomnum = int(user) + int(scam)
-    if int(randomnum) > int(do):
-       minus = int(randomnum) - int(do) + 1
-       randomnum = int(randomnum) - minus
-if int(choose) == 2:
-    randomnum = int(user) - int(scam)
-    if int(randomnum) < int(ot):
-        plus = int(ot) - int(randomnum) + 1
-        randomnum = randomnum + int(plus)
-
-if int(randomnum) == int(user):
-    if int(randomnum) < 100:
-        print("Ты угадал, молодец")
-    else:
-        print(f"Похоже ты обладаешь даром предвидинья, {name}")
-else:
-    print("Ты не угадал, попробуй еще раз")
-    print(f"Число которре было загадано {randomnum}")
-print(randomnum)
-
+print(Gamer)
